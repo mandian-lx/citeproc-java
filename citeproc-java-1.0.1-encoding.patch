@@ -1,0 +1,10 @@
+--- citeproc-java-1.0.1/build.gradle.utf8
++++ citeproc-java-1.0.1/build.gradle
+@@ -27,6 +27,7 @@
+         //link to JRE6 documentation
+         options.author true
+         options.links 'http://download.oracle.com/javase/6/docs/api/'
++        options.encoding = 'UTF-8'
+     }
+     
+     // package javadoc into a jar file

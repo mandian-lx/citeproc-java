@@ -1,0 +1,12 @@
+--- citeproc-java-1.0.1/citeproc-java/src/main/java/de/undercouch/citeproc/CSL.java.orig
++++ citeproc-java-1.0.1/citeproc-java/src/main/java/de/undercouch/citeproc/CSL.java
+@@ -443,6 +443,9 @@
+ 		}
+ 		URL url = getClass().getResource(styleName);
+ 		if (url == null) {
++			url = new File("/usr/share/citationstyles-styles/" + styleName).toURI().toURL();
++		}
++		if (url == null) {
+ 			throw new FileNotFoundException("Could not find style in classpath: " + styleName);
+ 		}
+ 		return CSLUtils.readURLToString(url, "UTF-8");

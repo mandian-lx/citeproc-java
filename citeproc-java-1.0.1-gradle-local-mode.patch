@@ -1,0 +1,192 @@
+--- citeproc-java-1.0.1/build.gradle.orig
++++ citeproc-java-1.0.1/build.gradle
+@@ -9,6 +9,7 @@
+     targetCompatibility = '1.8'
+     
+     repositories {
++        xmvn()
+         mavenCentral()
+         maven {
+             url 'https://oss.sonatype.org/content/groups/public'
+--- citeproc-java-1.0.1/buildSrc/build.gradle.orig
++++ citeproc-java-1.0.1/buildSrc/build.gradle
+@@ -1,6 +1,7 @@
+ apply plugin: 'groovy'
+ 
+ repositories {
++    xmvn()
+     mavenCentral()
+ }
+ 
+--- citeproc-java-1.0.1/citeproc-java-tool/build.gradle.orig
++++ citeproc-java-1.0.1/citeproc-java-tool/build.gradle
+@@ -1,6 +1,7 @@
+ apply plugin: 'application'
+ 
+ repositories {
++    xmvn()
+     mavenCentral()
+ }
+ 
+--- citeproc-java-1.0.1/citeproc-java/build.gradle.orig
++++ citeproc-java-1.0.1/citeproc-java/build.gradle
+@@ -1,17 +1,20 @@
+ buildscript {
++    repositories {
++        xmvn()
++    }
+     dependencies {
+         classpath 'org.apache.commons:commons-lang3:3.4'
+     }
+ }
+ 
+ plugins {
+-    id "de.undercouch.download" version "3.1.1"
++//    id "de.undercouch.download" version "3.1.1"
+ }
+ 
+ apply plugin: 'maven'
+ apply plugin: 'signing'
+ 
+-import de.undercouch.gradle.tasks.download.Download
++//import de.undercouch.gradle.tasks.download.Download
+ import org.apache.commons.lang3.SystemUtils
+ 
+ // citeproc version 1.1.137
+@@ -63,14 +66,14 @@
+     testCompile 'com.carrotsearch:junit-benchmarks:0.7.2'
+ }
+ 
+-task downloadCiteprocJs(type: Download) {
+-    acceptAnyCertificate true
+-    src citeprocJsUrl
+-    dest new File(projectDir, "src-gen/main/resources/de/undercouch/citeproc/citeproc.js")
+-    overwrite false
+-}
++//task downloadCiteprocJs(type: Download) {
++//    acceptAnyCertificate true
++//    src citeprocJsUrl
++//    dest new File(projectDir, "src-gen/main/resources/de/undercouch/citeproc/citeproc.js")
++//    overwrite false
++//}
+ 
+-task generateSources(dependsOn: downloadCiteprocJs) {
++task generateSources  {
+     inputs.files fileTree(dir: projectDir, includes: [ 'templates/*', 'grammars/*',
+         'src/main/resources/de/undercouch/citeproc/*.js',
+         'src-gen/main/resources/de/undercouch/citeproc/*.js' ])
+@@ -87,46 +90,46 @@
+     delete 'src-gen'
+ }
+ 
+-task downloadTestSuite(type: Download) {
+-    src citeprocTestSuiteUrl
+-    dest new File(buildDir, "test-suite/${citeprocTestSuiteZip}")
+-    compress false
+-    overwrite false
+-}
+-
+-task downloadCiteprocZip(type: Download) {
+-    acceptAnyCertificate true
+-    src citeprocZipUrl
+-    dest new File(buildDir, "test-suite/${citeprocZip}")
+-    overwrite false
+-}
+-
+-task extractCiteprocZip(type: Copy, dependsOn: downloadCiteprocZip) {
+-    from(zipTree(file(downloadCiteprocZip.dest))) {
+-        // exclude tests for non-standard features
+-        exclude '**/fixtures/local/*'
+-    }
+-    into new File(buildDir, "test-suite/extracted/")
+-    eachFile { fcp ->
+-        // strip off first directory
+-        fcp.relativePath = new RelativePath(!fcp.file.isDirectory(),
+-                fcp.relativePath.segments[1..-1] as String[])
+-    }
+-    includeEmptyDirs = false
+-}
+-
+-task extractTestSuite(type: Copy, dependsOn: [ downloadTestSuite, extractCiteprocZip ]) {
+-    from zipTree(file(downloadTestSuite.dest))
+-    into new File(buildDir, "test-suite/extracted/tests/fixtures/std")
+-    eachFile { fcp ->
+-        // strip off first directory
+-        fcp.relativePath = new RelativePath(!fcp.file.isDirectory(),
+-                fcp.relativePath.segments[1..-1] as String[])
+-    }
+-    includeEmptyDirs = false
+-}
++//task downloadTestSuite(type: Download) {
++//    src citeprocTestSuiteUrl
++//    dest new File(buildDir, "test-suite/${citeprocTestSuiteZip}")
++//    compress false
++//    overwrite false
++//}
++
++//task downloadCiteprocZip(type: Download) {
++//    acceptAnyCertificate true
++//    src citeprocZipUrl
++//    dest new File(buildDir, "test-suite/${citeprocZip}")
++//    overwrite false
++//}
++
++//task extractCiteprocZip(type: Copy, dependsOn: downloadCiteprocZip) {
++//    from(zipTree(file(downloadCiteprocZip.dest))) {
++//      // exclude tests for non-standard features
++//        exclude '**/fixtures/local/*'
++//    }
++//    into new File(buildDir, "test-suite/extracted/")
++//  eachFile { fcp ->
++//      // strip off first directory
++//      fcp.relativePath = new RelativePath(!fcp.file.isDirectory(),
++//              fcp.relativePath.segments[1..-1] as String[])
++//}
++//    includeEmptyDirs = false
++//}
++
++//task extractTestSuite(type: Copy) {
++//    from zipTree(file(downloadTestSuite.dest))
++//    into new File(buildDir, "test-suite/extracted/tests/fixtures/std")
++//    eachFile { fcp ->
++//        // strip off first directory
++//        fcp.relativePath = new RelativePath(!fcp.file.isDirectory(),
++//                fcp.relativePath.segments[1..-1] as String[])
++//    }
++//    includeEmptyDirs = false
++//}
+ 
+-task runTestSuite(dependsOn: [ extractTestSuite, testClasses ]) << {
++task runTestSuite(dependsOn: [ testClasses ]) << {
+     def tr = new CSLTestSuite(project, new File(buildDir, 'test-suite/extracted'))
+     tr.compile()
+     tr.fix()
+@@ -185,19 +187,20 @@
+ 
+ uploadArchives {
+     repositories {
++        xmvn()
+         mavenDeployer {
+             // sign artifacts before upload
+             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+             
+             // upload to sonatype OSS
+-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+-                authentication(userName: this.hasProperty('sonatypeUsername') ? sonatypeUsername : '',
+-                    password: this.hasProperty('sonatypePassword') ? sonatypePassword : '')
+-            }
+-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
+-                authentication(userName: this.hasProperty('sonatypeUsername') ? sonatypeUsername : '',
+-                    password: this.hasProperty('sonatypePassword') ? sonatypePassword : '')
+-            }
++//            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
++//                authentication(userName: this.hasProperty('sonatypeUsername') ? sonatypeUsername : '',
++//                    password: this.hasProperty('sonatypePassword') ? sonatypePassword : '')
++//            }
++//            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots") {
++//                authentication(userName: this.hasProperty('sonatypeUsername') ? sonatypeUsername : '',
++//                    password: this.hasProperty('sonatypePassword') ? sonatypePassword : '')
++//            }
+             
+             // pom file details
+             pom.project {

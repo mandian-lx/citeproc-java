@@ -1,0 +1,20 @@
+--- citeproc-java-1.0.1/citeproc-java/src/main/java/de/undercouch/citeproc/DefaultLocaleProvider.java.orig
++++ citeproc-java-1.0.1/citeproc-java/src/main/java/de/undercouch/citeproc/DefaultLocaleProvider.java
+@@ -14,6 +14,7 @@
+ 
+ package de.undercouch.citeproc;
+ 
++import java.io.File;
+ import java.io.IOException;
+ import java.net.URL;
+ import java.util.HashMap;
+@@ -43,6 +43,9 @@
+ 		if (r == null) {
+ 			try {
+ 				URL u = getClass().getResource("/locales-" + lang + ".xml");
++				if (u == null) {
++					u = new File("/usr/share/citationstyles-locales/locales-" + lang + ".xml").toURI().toURL();
++				}
+ 				if (u == null) {
+ 					throw new IllegalArgumentException("Unable to load locale " +
+ 							lang + ". Make sure you have a file called " +

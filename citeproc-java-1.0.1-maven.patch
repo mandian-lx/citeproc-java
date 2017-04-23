@@ -1,0 +1,10 @@
+--- citeproc-java-1.0.1/build.gradle.maven
++++ citeproc-java-1.0.1/build.gradle
+@@ -2,6 +2,7 @@
+     apply plugin: 'java'
+     apply plugin: 'osgi'
+     apply plugin: 'eclipse'
++    apply plugin: 'maven'
+     
+     version = '1.0.1'
+     group = 'de.undercouch'

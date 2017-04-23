@@ -1,0 +1,22 @@
+--- citeproc-java-1.0.1/buildSrc/build.gradle.orig
++++ citeproc-java-1.0.1/buildSrc/build.gradle
+@@ -10,9 +11,16 @@
+     compile 'com.fasterxml.jackson.core:jackson-databind:2.2.3'
+     compile 'org.antlr:antlr4:4.5.3'
+     compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
+-    compile 'org.eclipse.tycho:org.eclipse.jdt.core:3.9.0.v20130604-1421'
++    compile 'org.eclipse:osgi-SYSTEM:SYSTEM'
++    compile 'org.eclipse.equinox:registry:SYSTEM'
++    compile 'org.eclipse.equinox:registry:SYSTEM'
++    compile 'org.eclipse.equinox:common:SYSTEM'
++    compile 'org.eclipse:text:SYSTEM'
++    compile 'org.eclipse.jdt.core:3.10.0:SYSTEM'
++    compile 'org.eclipse.core:jobs:SYSTEM'
++    compile 'org.eclipse.core:runtime:SYSTEM'
+     compile 'org.fusesource.jansi:jansi:1.14'
+-    compile 'org.mod4j.org.eclipse.jface:text:3.5.0'
+-    compile 'org.mod4j.org.eclipse.core:resources:3.5.0'
++    compile 'org.eclipse.jface:text:SYSTEM'
++    compile 'org.eclipse.core:resources:SYSTEM'
+     compile 'org.python:jython-standalone:2.7-b1'
+ }

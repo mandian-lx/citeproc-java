@@ -1,0 +1,56 @@
+--- citeproc-java-1.0.1/citeproc-java/build.gradle.osgi
++++ citeproc-java-1.0.1/citeproc-java/build.gradle
+@@ -150,12 +150,12 @@
+ 
+ jar {
+     // define OSGi bundle manifest
+-    manifest {
+-        name = 'citeproc-java'
+-        symbolicName = "de.undercouch.citeproc"
+-        vendor = 'Michel Kraemer'
+-        instruction 'Export-Package', "de.undercouch.*;version=${version}"
+-    }
++//    manifest {
++//        name = 'citeproc-java'
++//        symbolicName = "de.undercouch.citeproc"
++//        vendor = 'Michel Kraemer'
++//        instruction 'Export-Package', "de.undercouch.*;version=${version}"
++//    }
+     
+     // include license into jar
+     from new File(project.rootDir, 'LICENSE.txt')
+--- citeproc-java-1.0.1/build.gradle.osgi
++++ citeproc-java-1.0.1/build.gradle
+@@ -1,6 +1,6 @@
+ subprojects {
+     apply plugin: 'java'
+-    apply plugin: 'osgi'
++//    apply plugin: 'osgi'
+     apply plugin: 'eclipse'
+     apply plugin: 'maven'
+     
+--- citeproc-java-1.0.1/citeproc-java-tool/build.gradle.osgi
++++ citeproc-java-1.0.1/citeproc-java-tool/build.gradle
+@@ -20,14 +20,14 @@
+ 
+ jar {
+     // define OSGi bundle manifest
+-    manifest {
+-        name = 'citeproc-java-tool'
+-        symbolicName = "de.undercouch.citeproc.tool"
+-        vendor = 'Michel Kraemer'
+-        instruction 'Import-Package', '*,org.mozilla.javascript;resolution:=optional'
+-        instruction 'Export-Package', "de.undercouch.*;version=${version}"
+-        instruction 'Main-Class', project.mainClassName
+-    }
++//    manifest {
++//        name = 'citeproc-java-tool'
++//        symbolicName = "de.undercouch.citeproc.tool"
++//        vendor = 'Michel Kraemer'
++//        instruction 'Import-Package', '*,org.mozilla.javascript;resolution:=optional'
++//        instruction 'Export-Package', "de.undercouch.*;version=${version}"
++//        instruction 'Main-Class', project.mainClassName
++//    }
+     
+     // include license into jar
+     from new File(project.rootDir, 'LICENSE.txt')
