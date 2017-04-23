@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://fedorahosted.org/xmvn/METADATA/2.0.0">
+  <artifacts>
+
+    <artifact>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>resources</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>@LIBDIR@/eclipse/plugins/org.eclipse.core.resources_3.9.1.v20151015-1348.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>resources</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.eclipse.jface</groupId>
+      <artifactId>text</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>@LIBDIR@/eclipse/plugins/org.eclipse.jface.text_3.9.1.v20151015-1348.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse.jface</groupId>
+      <artifactId>text</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>runtime</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/eclipse/core.runtime.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>runtime</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+    
+    <artifact>
+      <groupId>org.eclipse.equinox</groupId>
+      <artifactId>registry</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/eclipse/equinox.registry.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse.equinox</groupId>
+      <artifactId>registry</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.eclipse.equinox</groupId>
+      <artifactId>common</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/eclipse/equinox.common.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse.equinox</groupId>
+      <artifactId>common</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+      <!--path>org.eclipse.core.runtime.pom.xml</path-->
+    </artifact>
+
+    <artifact>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>jobs</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/eclipse/core.jobs.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>jobs</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.eclipse</groupId>
+      <artifactId>osgi-SYSTEM</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>/usr/share/java/eclipse/osgi.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse</groupId>
+      <artifactId>osgi-SYSTEM</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+    <artifact>
+      <groupId>org.eclipse.jdt.core</groupId>
+      <artifactId>3.10.0</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>@LIBDIR@/eclipse/dropins/jdt/plugins/org.eclipse.jdt.core_3.10.0.v20151015-1348.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse.core</groupId>
+      <artifactId>3.10.0</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+      <!--path>org.eclipse.jdt.core.pom.xml</path-->
+    </artifact>
+
+    <artifact>
+      <groupId>org.eclipse</groupId>
+      <artifactId>text</artifactId>
+      <version>SYSTEM</version>
+      <extension>jar</extension>
+      <path>@LIBDIR@//eclipse/plugins/org.eclipse.text_3.5.300.v20151015-1348.jar</path>
+    </artifact>
+    <artifact>
+      <groupId>org.eclipse</groupId>
+      <artifactId>text</artifactId>
+      <version>SYSTEM</version>
+      <extension>pom</extension>
+      <path>/dev/null</path>
+    </artifact>
+
+  </artifacts>
+</metadata>
+
