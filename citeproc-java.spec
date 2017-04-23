@@ -39,6 +39,7 @@ BuildRequires:	jpackage-utils
 BuildRequires:	java-headless
 BuildRequires:	maven-local
 BuildRequires:	gradle-local
+BuildRequires:	eclipse-jdt
 BuildRequires:	j2v8
 BuildRequires:	mvn(de.undercouch:underline-1.0.0)
 BuildRequires:	mvn(org.antlr:antlr4)
