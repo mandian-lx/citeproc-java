@@ -41,6 +41,7 @@ BuildRequires:	maven-local
 BuildRequires:	gradle-local
 BuildRequires:	j2v8
 BuildRequires:	mvn(de.undercouch:underline-1.0.0)
+BuildRequires:	mvn(org.antlr:antlr4)
 BuildRequires:	mvn(org.antlr:antlr4-runtime)
 BuildRequires:	mvn(org.apache.commons:commons-lang3)
 BuildRequires:	mvn(org.mapdb:mapdb)
@@ -124,6 +125,8 @@ rm -fr citeproc-java/test-suite/test-suite/extracted/citeproc-js-2d1bb8dddf152f7
 sed -i -e "s|org.apache.directory.studio:org.apache.commons.io:2.4|org.apache.commons:commons-io:2.4|" buildSrc/build.gradle
 #   use system citationstyles-*
 sed -i -e '/citationstyles/d' citeproc-java-tool/build.gradle
+#   underline
+sed -i -e "s|de.undercouch:underline:1.0.0|de.undercouch:underline-1.0.0:1.0.0|" citeproc-java-tool/build.gradle
 
 #   metadata
 sed -e 's|@LIBDIR@|%{_libdir}|g' %{SOURCE2} > maven-metadata.xml
